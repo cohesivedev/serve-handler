@@ -392,7 +392,7 @@ const renderDirectory = async (current, acceptsJSON, handlers, methods, config, 
 	}
 
 	const toRoot = path.relative(current, absolutePath);
-	const directory = path.join(path.basename(current), toRoot, slashSuffix);
+	const directory = relativePath;
 	const pathParts = directory.split(path.sep).filter(Boolean);
 
 	// Sort to list directories first, then sort alphabetically
@@ -417,20 +417,6 @@ const renderDirectory = async (current, acceptsJSON, handlers, methods, config, 
 		/* istanbul ignore next */
 		return 0;
 	}).filter(Boolean);
-
-	// Add parent directory to the head of the sorted files array
-	if (0 && toRoot.length > 0) {
-		const directoryPath = [...pathParts].slice(1);
-		const relative = path.join('/', ...directoryPath, '..', slashSuffix);
-
-		files.unshift({
-			type: 'directory',
-			base: '..',
-			relative,
-			title: relative,
-			ext: ''
-		});
-	}
 
 	const subPaths = [];
 

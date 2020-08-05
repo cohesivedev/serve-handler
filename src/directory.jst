@@ -114,7 +114,6 @@
 			flex-wrap: wrap;
 		  }
 		  ul li {
-			width: 230px;
 			padding-right: 20px;
 		  }
 		}
@@ -139,10 +138,10 @@
     <main>
       <header>
         <h1>
-          <i>Index of&nbsp;</i>
+          <i>Files inside &nbsp;</i>
 
           {{~it.paths :value:index}}
-            <a href="{{!value.url}}">{{!value.name}}</a>
+            {{!value.name}}
           {{~}}
         </h1>
       </header>
