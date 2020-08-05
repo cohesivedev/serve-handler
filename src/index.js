@@ -357,8 +357,8 @@ const renderDirectory = async (current, acceptsJSON, handlers, methods, config, 
 		} else {
 			stats = await handlers.lstat(filePath);
 		}
-
-		details.relative = path.join(relativePath, details.base);
+		//details.relative = path.join(relativePath, details.base);
+		details.relative = details.base; // no need to use absolute path here
 
 		if (stats.isDirectory()) {
 			details.base += slashSuffix;
@@ -419,7 +419,7 @@ const renderDirectory = async (current, acceptsJSON, handlers, methods, config, 
 	}).filter(Boolean);
 
 	// Add parent directory to the head of the sorted files array
-	if (toRoot.length > 0) {
+	if (0 && toRoot.length > 0) {
 		const directoryPath = [...pathParts].slice(1);
 		const relative = path.join('/', ...directoryPath, '..', slashSuffix);
 
